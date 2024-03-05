@@ -6,13 +6,13 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:11:40 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/05 16:55:45 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/05 18:16:02 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	args_validation(char **args)
+void	args_validation(char **args, t_stack push)
 {
 	int	idx;
 	int	odx;
@@ -25,7 +25,9 @@ void	args_validation(char **args)
 		{
 			if (!ft_isdigit(args[idx][odx]) && !ft_isspace(args[idx][odx]))
 				return (ft_putstr_fd(INVALID_MSG, 2), 1);
-			if (ft_isspace(args[idx][odx]) && ft_isspace(args[idx][odx + 1]))
+			if (ft_isspace(args[idx][odx]) && (ft_isspace(args[idx][odx + 1]
+				|| args[idx][odx + 1] == NULL)))
+				push.size++;
 			odx++;
 		}
 		idx++;
@@ -33,10 +35,10 @@ void	args_validation(char **args)
 
 }
 
-int	validation(int arg_nbr, char **args)
+int	validation(int arg_nbr, char **args, t_stack push)
 {
 	if (arg_nbr < 2)
 		return (ft_putstr_fd(PARAMETERS_MSG, 2), 1);
-	args_validation(args);
+	args_validation(args, push);
 
 }
