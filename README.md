@@ -1,1 +1,1 @@
-# PushSwap_42SP
+# Push_Swap_42SP
