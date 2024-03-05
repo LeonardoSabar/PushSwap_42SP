@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:33:13 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/05 19:12:02 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/05 20:40:00 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,10 @@
 # define PARAMETERS_MSG "Erro\n Two or more parameters are required\n"
 # define INVALID_MSG "Invalid argument\n"
 
-
 typedef struct s_stack
 {
-	t_stack	*next;
-	t_stack	*prev;
+	struct s_stack	*next;
+	struct s_stack	*prev;
 	int		value;
 	int		position;
 }	t_stack;
@@ -37,7 +36,8 @@ typedef struct s_push
 	int		size;
 }	t_push;
 
-void	args_validation(char **args, t_stack push);
-int		validation(int arg_nbr, char **args, t_stack push);
+int		args_validation(char **args, t_push *push);
+int		validation(int arg_nbr, char **args, t_push *push);
+void	stack_build(t_push *stack, char **argv);
 
 #endif

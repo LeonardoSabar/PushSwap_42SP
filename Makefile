@@ -8,7 +8,7 @@ CFLAGS	:= -Wextra -Wall -Werror -g3
 LIBFT	:= ./lib/libft
 PRINTF	:= ./lib/printf
 
-SRC	:= src/push_swap.c
+SRC	:= $(wildcard src/*.c)
 OBJS	:= $(SRC:src/%.c=obj/%.o)
 
 SRC_BONUS := bonus/checker.c
