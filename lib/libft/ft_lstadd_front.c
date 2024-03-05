@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 18:33:16 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/05 16:38:50 by leobarbo         ###   ########.fr       */
+/*   Created: 2024/03/05 13:05:08 by leobarbo          #+#    #+#             */
+/*   Updated: 2024/03/05 13:05:16 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc,char **argv)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	printf("Welcome to Push_Swap\n");
-	validation(argc, argv);
-	return (0);
+	if (!lst || !new)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }

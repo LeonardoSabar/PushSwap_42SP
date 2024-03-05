@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 18:33:16 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/05 16:38:50 by leobarbo         ###   ########.fr       */
+/*   Created: 2024/03/05 16:31:08 by leobarbo          #+#    #+#             */
+/*   Updated: 2024/03/05 16:35:24 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-int	main(int argc,char **argv)
+int	ft_isspace(int c)
 {
-	printf("Welcome to Push_Swap\n");
-	validation(argc, argv);
+	if ((c >= 9 && c <= 13) || c == 32)
+		return (1);
 	return (0);
 }

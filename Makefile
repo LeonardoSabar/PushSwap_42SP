@@ -35,7 +35,7 @@ printf:
 	$(MAKE) -C ${PRINTF} all
 
 $(PUSH_SWAP): $(OBJS)
-	printf "\n$(YELLOW) Compiling Push_Swap...$(RESET)\n"
+	printf "\n$(YELLOW) Compiling push_swap...$(RESET)\n"
 	$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(PUSH_SWAP)
 	printf "\n$(GREEN) Done!\n $(RESET)"
 

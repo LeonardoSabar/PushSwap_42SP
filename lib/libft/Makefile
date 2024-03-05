@@ -6,20 +6,52 @@
 #    By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/20 08:35:36 by leobarbo          #+#    #+#              #
-#    Updated: 2024/01/16 13:27:18 by leobarbo         ###   ########.fr        #
+#    Updated: 2024/03/05 16:36:33 by leobarbo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+#! ******************************************************************************#
+#                                   NAME                                         #
+#! ******************************************************************************#
 
-NAME := libft.a
+NAME = libft.a
+.DEFAULT_GOAL := all
+.PHONY: all clean fclean re
+.SILENT:
 
-SRCS := ft_atoi.c\
+#! ******************************************************************************#
+#                                   COLORS                                       #
+#! ******************************************************************************#
+
+GREEN = \033[32m
+YELLOW = \033[33m
+PURPLE = \033[35m
+RED = \033[31m
+WHITE = \033[37m
+FCOLOR = \033[0m
+ORANGE=\033[93m
+DARK_BLUE=\033[34m
+
+#! ******************************************************************************#
+#                                   PATH                                         #
+#! ******************************************************************************#
+
+SRCS_PATH = ./
+BUILD_DIR := build/
+
+#! ******************************************************************************#
+#                                   FILES                                        #
+#! ******************************************************************************#
+
+SRCS := $(addprefix $(SRCS_PATH),\
+		ft_atoi.c\
 		ft_bzero.c\
 		ft_calloc.c\
 		ft_isalnum.c\
 		ft_isalpha.c\
 		ft_isascii.c\
 		ft_isdigit.c\
+		ft_isspace.c\
 		ft_isprint.c\
 		ft_memchr.c\
 		ft_memcmp.c\
@@ -47,32 +79,83 @@ SRCS := ft_atoi.c\
 		ft_strtrim.c\
 		ft_itoa.c\
 		ft_split.c\
+		ft_lstnew.c \
+		ft_lstmap.c \
+		ft_lstadd_front.c \
+		ft_lstsize.c \
+		ft_lstlast.c \
+		ft_lstadd_back.c \
+		ft_lstdelone.c \
+		ft_lstclear.c \
+		ft_lstiter.c)
 
-OBJS := $(SRCS:.c=.o)
+OBJS := $(SRCS:%.c=$(BUILD_DIR)%.o)
 
-CC := cc
+#! ******************************************************************************#
+#                                    COMMANDS                                    #
+#! ******************************************************************************#
 
-CFLAGS := -Wall -Wextra -Werror
-
-AR := ar -rcs
-
+MKDIR := mkdir -p
 RM := rm -rf
+SLEEP = sleep 0.01
+CC = cc
+AR := ar -rcs
+COUNT ?= 0
+
+#! ******************************************************************************#
+#                                 FLAGS E COMP                                   #
+#! ******************************************************************************#
+
+CFLAGS = -Wall -Wextra -Werror
+DFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+LDLIBS = -lft -ldl -lglfw -pthread
+LDFLAGS = $(addprefix -L,$(dir $(LIBS)))
+CPPFLAGS = $(addprefix -I,$(INCS_PATH)) -MMD -MP
+COMP_OBJ = $(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+
+#! ******************************************************************************#
+#                                  FUNCTIONS                                     #
+#! ******************************************************************************#
+
+define create_dir
+	$(MKDIR) $(dir $@)
+endef
+
+define comp_objs
+	$(eval COUNT=$(shell expr $(COUNT) + 1))
+	$(COMP_OBJ)
+	$(SLEEP)
+	printf " $(DARK_BLUE) 🤔 Loading libft: $(YELLOW) %d%%\r$(FCOLOR)" $$(echo $$(($(COUNT) * 100 / $(words $(SRCS)))))
+	@if [ $(COUNT) -eq $(words $(SRCS)) ]; then \
+		printf "$(GREEN)  🙂 Libft is ready!\n"; \
+	fi
+endef
+
+# define comp_static_library
+# 	printf "$(GREEN)  🙂 Libft is ready!\n$(RESET)"
+# endef
+
+#! ******************************************************************************#
+#                                   TARGETS                                      #
+#! ******************************************************************************#
 
 all: $(NAME)
+	$(call comp_static_library)
 
-%.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@ -g3
-	@$(AR) $(NAME) $@
-	@printf "Compiling: $(notdir $<)\n"
+$(BUILD_DIR)%.o: %.c
+	$(call create_dir)
+	$(call comp_objs)
+	$(AR) $(NAME) $@
 
 $(NAME): $(OBJS)
 
+
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(BUILD_DIR)
 
 fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+-include $(DEPS)

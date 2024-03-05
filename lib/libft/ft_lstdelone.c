@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 18:33:16 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/05 16:38:50 by leobarbo         ###   ########.fr       */
+/*   Created: 2024/03/05 13:07:17 by leobarbo          #+#    #+#             */
+/*   Updated: 2024/03/05 13:07:22 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc,char **argv)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	printf("Welcome to Push_Swap\n");
-	validation(argc, argv);
-	return (0);
+	if (!del || !lst)
+		return ;
+	del(lst->content);
+	free(lst);
 }

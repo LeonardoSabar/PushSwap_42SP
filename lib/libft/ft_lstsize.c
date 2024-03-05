@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 18:33:16 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/05 16:38:50 by leobarbo         ###   ########.fr       */
+/*   Created: 2024/03/05 13:09:02 by leobarbo          #+#    #+#             */
+/*   Updated: 2024/03/05 13:09:08 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc,char **argv)
+int	ft_lstsize(t_list *lst)
 {
-	printf("Welcome to Push_Swap\n");
-	validation(argc, argv);
-	return (0);
+	size_t	size_list;
+
+	size_list = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		size_list++;
+	}
+	return (size_list);
 }
