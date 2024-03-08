@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:11:40 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/08 13:53:25 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/08 17:36:09 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	int_compare(t_push *stack)
 		{
 			if (tmp->value == stack->array[idx] && compare == 1)
 				message_error(INT_DUPLICATED, (ft_itoa(tmp->value)));
+			// if (tmp->value > INT_MAX || tmp->value < INT_MIN)
+			// 	message_error(INT_OVERFLOW, NULL);
 			else if (tmp->value == stack->array[idx])
 				compare = 1;
 			idx++;
@@ -76,7 +78,7 @@ void count_validation(int arg_nbr, char **args, t_push *push)
 		message_error(PARAMETERS_MSG, "");
 	if (arg_nbr == 2)
 	{
-		if (ft_strncmp(args[1], str, 1) == 0)
+		if (ft_strlen(str) == 0 || str[0] == '\0' || str[0] == ' ') // confirmar esta verificação
 			message_error(INVALID_MSG, args[1]);
 	}
 }

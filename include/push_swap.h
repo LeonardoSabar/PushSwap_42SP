@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:33:13 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/08 13:57:54 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/08 16:49:00 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define INVALID_MSG "Invalid argument"
 # define INT_DUPLICATED "Duplicated number: "
 # define NOT_INT "Not a valid number: "
+# define INT_OVERFLOW "Number overflow"
 
 typedef struct s_stack
 {
