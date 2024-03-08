@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:33:13 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/06 17:41:53 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/08 10:41:24 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,53 @@
 # define PUSH_SWAP_H
 
 # include <stdio.h>
-# include "../lib/libft/libft.h"
-# include "../lib/printf/includes/ft_printf.h"
+# include "libft.h"
+# include "ft_printf.h"
 
 
-# define PARAMETERS_MSG "Erro\n Two or more parameters are required\n"
-# define INVALID_MSG "Invalid argument\n"
+# define PARAMETERS_MSG "Two or more parameters are required"
+# define INVALID_MSG "Invalid argument"
+# define INT_DUPLICATED "Duplicated numbers: "
+# define NOT_INT "Not a number: "
 
 typedef struct s_stack
 {
 	struct s_stack	*next;
 	struct s_stack	*prev;
-	int		value;
-	int		position;
-	struct s_stack	**first;
-	struct s_stack	**last;
-
+	int				value;
+	int				position;
 }	t_stack;
 
 typedef struct s_push
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	//Tentar colocar o first e last aqui!
+	t_stack	*first_a;
+	t_stack	*last_a;
+	t_stack	*first_b;
+	t_stack	*last_b;
 	int		size;
 	int		*array;
 }	t_push;
 
-int		args_validation(char **args, t_push *push);
-int		validation(int arg_nbr, char **args, t_push *push);
+typedef enum e_exit
+{
+	SUCCESS,
+	FAILURE,
+}	t_exit;
+
+typedef enum e_type
+{
+	INPUT,
+	OUTPUT,
+	ERROR,
+}	t_type;
+
+void	args_validation(char **args);
+void	validation(int arg_nbr, char **args, t_push *push);
 void	stack_build(t_push *stack, char **argv);
-int		int_compare(t_push *stack);
+void	int_compare(t_push *stack);
 int		list_to_compare(t_push *stack);
+void	message_error(char *str1, char *str2);
 
 #endif

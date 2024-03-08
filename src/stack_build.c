@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 17:20:17 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/06 17:39:29 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/08 08:58:16 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,9 @@ void	stack_build(t_push *stack, char **argv)
 			new->value = ft_atoi(args[odx]);
 			if (!stack->stack_a)
 			{
-				// stack->stack_a->prev = NULL;
-				// stack->stack_a->next = NULL;
 				stack->stack_a = new;
-				stack->stack_a->first = &stack->stack_a;
+				stack->first_a = stack->stack_a;
+				stack->size++;
 				printf("%d\n", stack->stack_a->value);
 			}
 			else
@@ -57,6 +56,7 @@ void	stack_build(t_push *stack, char **argv)
 				new->prev = stack->stack_a;
 				stack->stack_a->next = new;
 				stack->stack_a = new;
+				stack->size++;
 				printf("%d %d\n", stack->stack_a->value, stack->stack_a->prev->value);
 			}
 			odx++;

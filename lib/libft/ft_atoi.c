@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:37:53 by leobarbo          #+#    #+#             */
-/*   Updated: 2023/11/07 09:51:55 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/08 09:28:06 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ int	ft_atoi(const char *str)
 	if (str[idx] == '-')
 	{
 		h = -1;
-		idx++;
+		while (str[idx] == '-')
+			idx++;
 	}
-	else if (str[idx] == '+')
-		idx++;
+	if (str[idx] == '+')
+		while (str[idx] == '+')
+			idx++;
 	while (str[idx] >= '0' && str[idx] <= '9')
 	{
 		value = (value * 10) + (str[idx] - '0');

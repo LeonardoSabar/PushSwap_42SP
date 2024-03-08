@@ -10,6 +10,7 @@ PRINTF	:= ./lib/printf
 
 SRC	:= $(wildcard src/*.c)
 OBJS	:= $(SRC:src/%.c=obj/%.o)
+DEPS = $(OBJS:.o=.d)
 
 SRC_BONUS := bonus/checker.c
 BONUS_OBJS := $(SRC_BONUS:bonus/%.c=obj_bonus/%.o)
@@ -21,7 +22,7 @@ BLUE := \033[34m
 YELLOW := \033[33m
 RESET := \033[0m
 
-HEADERS	:= -I ./include -I $(LIBFT)/include -I $(PRINTF)/include
+HEADERS	:= -I ./include -I $(LIBFT)/ -I $(PRINTF)/includes
 LIBS	:= ${LIBFT}/libft.a $(PRINTF)/libftprintf.a -ldl -lglfw -pthread -lm
 
 all: libft printf $(PUSH_SWAP)
@@ -61,3 +62,5 @@ fclean: clean
 re: fclean all
 
 .PHONY: all, clean, fclean, re, libft, printf
+
+-include $(DEPS)

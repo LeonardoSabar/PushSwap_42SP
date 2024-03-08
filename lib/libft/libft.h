@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 17:06:11 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/05 16:36:13 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/08 09:28:34 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-
 
 typedef struct s_list
 {
