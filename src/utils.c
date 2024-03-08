@@ -1,25 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 18:33:16 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/08 13:53:59 by leobarbo         ###   ########.fr       */
+/*   Created: 2024/03/08 13:19:30 by leobarbo          #+#    #+#             */
+/*   Updated: 2024/03/08 13:58:38 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc,char **argv)
+void	message_error(char *str1, char *str2)
 {
-	t_push	push;
+	ft_putstr_fd("Push_swap: ", ERROR);
+	ft_putstr_fd(str1, ERROR);
+	ft_putendl_fd(str2, ERROR);
+	exit(EXIT_FAILURE);
+}
 
-	count_validation(argc, argv, &push);
-	args_validation(argv);
-	stack_build(&push, argv);
-	list_to_compare(&push);
-	int_compare(&push);
+int	list_to_compare(t_push *stack)
+{
+	int	idx;
+	t_stack	*tmp;
+
+	tmp = stack->first_a;
+	stack->array = malloc(sizeof(int) * stack->size);
+	if (!stack->array)
+		return (1);
+	idx = 0;
+	while (tmp)
+	{
+		stack->array[idx] = tmp->value;
+		tmp = tmp->next;
+		idx++;
+	}
 	return (0);
+
 }

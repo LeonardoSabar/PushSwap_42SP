@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:33:13 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/08 10:41:24 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/08 13:57:54 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@
 # include "libft.h"
 # include "ft_printf.h"
 
+# define INT_MIN -2147483648
+# define INT_MAX 2147483647
 
 # define PARAMETERS_MSG "Two or more parameters are required"
 # define INVALID_MSG "Invalid argument"
-# define INT_DUPLICATED "Duplicated numbers: "
-# define NOT_INT "Not a number: "
+# define INT_DUPLICATED "Duplicated number: "
+# define NOT_INT "Not a valid number: "
 
 typedef struct s_stack
 {
@@ -57,7 +59,7 @@ typedef enum e_type
 }	t_type;
 
 void	args_validation(char **args);
-void	validation(int arg_nbr, char **args, t_push *push);
+void	count_validation(int arg_nbr, char **args, t_push *push);
 void	stack_build(t_push *stack, char **argv);
 void	int_compare(t_push *stack);
 int		list_to_compare(t_push *stack);
