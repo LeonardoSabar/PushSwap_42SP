@@ -58,6 +58,7 @@ clean:
 
 fclean: clean
 	rm -rf $(PUSH_SWAP) $(CHECKER)
+	@$(MAKE) -C $(LIBFT) fclean
 
 re: fclean all
 

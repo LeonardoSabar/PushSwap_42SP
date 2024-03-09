@@ -6,7 +6,7 @@
 #    By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/20 08:35:36 by leobarbo          #+#    #+#              #
-#    Updated: 2024/03/05 16:36:33 by leobarbo         ###   ########.fr        #
+#    Updated: 2024/03/09 15:32:20 by leobarbo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,7 +97,7 @@ OBJS := $(SRCS:%.c=$(BUILD_DIR)%.o)
 
 MKDIR := mkdir -p
 RM := rm -rf
-SLEEP = sleep 0.01
+SLEEP = sleep 0.001
 CC = cc
 AR := ar -rcs
 COUNT ?= 0

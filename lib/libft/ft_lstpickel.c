@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstpickel.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 18:33:16 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/09 14:55:46 by leobarbo         ###   ########.fr       */
+/*   Created: 2024/03/09 15:16:13 by leobarbo          #+#    #+#             */
+/*   Updated: 2024/03/09 15:16:19 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc,char **argv)
+t_element	*ft_lstpickel(t_dolist *lst, int index)
 {
-	t_push	push;
+	t_element	*el;
 
-	count_validation(argc, argv, &push);
-	sign_validation(argv);
-	args_validation(argv);
-	stack_build(&push, argv);
-	list_to_compare(&push);
-	int_compare(&push);
-	return (0);
+	if ((!lst) || (index < 0 && - index > (int)lst->size)
+		|| (index >= 0 && index + 1 > (int)lst->size))
+		return (NULL);
+	if (index < 0)
+	{
+		el = lst->last;
+		while (++index)
+			el = el->prev;
+	}
+	else
+	{
+		el = lst->first;
+		while (index--)
+			el = el->next;
+	}
+	return (el);
 }

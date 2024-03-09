@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:11:40 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/09 15:01:29 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/09 16:54:02 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ void	sign_validation(char **args)
 					message_error(NOT_INT, args[idx]);
 				odx++;
 			}
+			if (!ft_isdigit(args[idx][odx]) && !ft_isspace_push(args[idx][odx]) && args[idx][odx] != '\0')
+				message_error(NOT_INT, &args[idx][odx]);
 		}
 	}
 }

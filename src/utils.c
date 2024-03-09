@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:19:30 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/09 15:01:06 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/09 16:57:09 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	message_error(char *str1, char *str2)
 
 int	list_to_compare(t_push *stack)
 {
-	int	idx;
+	int		idx;
 	t_stack	*tmp;
 
 	tmp = stack->first_a;
@@ -37,7 +37,6 @@ int	list_to_compare(t_push *stack)
 		idx++;
 	}
 	return (0);
-
 }
 
 long	ft_atol(const char *str)
@@ -68,6 +67,7 @@ long	ft_atol(const char *str)
 	value = value * h;
 	return (value);
 }
+
 int	ft_isspace_push(int c)
 {
 	if ((c >= 11 && c <= 13) || c == 32 || c == 9)
