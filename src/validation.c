@@ -6,37 +6,13 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:11:40 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/09 18:57:31 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/09 20:10:50 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	int_compare(t_push *stack)
-{
-	int		idx;
-	int		compare;
-	t_stack	*tmp;
-
-	tmp = stack->first_a;
-	while (tmp && tmp->next)
-	{
-		compare = 0;
-		idx = 0;
-		while (idx < stack->size)
-		{
-			if (tmp->value == stack->array[idx] && compare == 1)
-				message_error(INT_DUPLICATED, (ft_itoa(tmp->value)));
-			else if (tmp->value == stack->array[idx])
-				compare = 1;
-			idx++;
-		}
-		tmp = tmp->next;
-	}
-	free(stack->array);
-}
-
-void	args_validation(char **args)
+void	arg_validation(char **args)
 {
 	int	idx;
 	int	odx;
@@ -47,44 +23,22 @@ void	args_validation(char **args)
 		odx = -1;
 		while (args[idx][++odx])
 		{
-			if (ft_isdigit(args[idx][odx])
-				&& !ft_isdigit(args[idx][odx + 1])
+			signal_validation(args, &idx, &odx);
+			if (ft_isdigit(args[idx][odx]) && !ft_isdigit(args[idx][odx + 1])
 				&& !ft_isspace_push(args[idx][odx + 1])
 				&& args[idx][odx + 1] != '\0')
 				message_error(NOT_INT, args[idx]);
-		}
-		if (ft_atol(args[idx]) > INT_MAX
-			|| ft_atol(args[idx]) < INT_MIN)
-			message_error(INT_OVERFLOW, args[idx]);
-	}
-}
-
-void	sign_validation(char **args)
-{
-	int	idx;
-	int	odx;
-
-	idx = 0;
-	while (args[++idx])
-	{
-		odx = -1;
-		while (args[idx][++odx])
-		{
-			sign(args, &idx, &odx);
-			if (!ft_isdigit(args[idx][odx])
-				&& !ft_isspace_push(args[idx][odx])
-				&& args[idx][odx] != '\0')
-				message_error(NOT_INT, &args[idx][odx]);
+			if (ft_atol(args[idx]) > INT_MAX || ft_atol(args[idx]) < INT_MIN)
+				message_error(INT_OVERFLOW, args[idx]);
 		}
 	}
 }
 
-void	count_validation(int arg_nbr, char **args, t_push *push)
+void	validation(int arg_nbr, char **args, t_push *push)
 {
 	int	idx;
 	int	odx;
 
-	push->size = 0;
 	push->stacks.stack_a = NULL;
 	push->stacks.stack_b = NULL;
 	idx = 0;
@@ -99,4 +53,27 @@ void	count_validation(int arg_nbr, char **args, t_push *push)
 			if (args[idx][odx + 1] == '\0')
 				message_error(EMPTY_ARRAY, args[idx]);
 	}
+	arg_validation(args);
+}
+
+void	signal_validation(char **args, int *idx, int *odx)
+{
+	while (args[*idx][*odx] == '-')
+	{
+		if (!ft_isdigit(args[*idx][(*odx) + 1])
+			&& !(args[*idx][(*odx) + 1] == '-'))
+			message_error(NOT_INT, args[*idx]);
+		(*odx)++;
+	}
+	while (args[*idx][*odx] == '+')
+	{
+		if (!ft_isdigit(args[*idx][(*odx) + 1])
+			&& !(args[*idx][(*odx) + 1] == '+'))
+			message_error(NOT_INT, args[*idx]);
+		(*odx)++;
+	}
+	if (!ft_isdigit(args[*idx][*odx])
+		&& !ft_isspace_push(args[*idx][*odx])
+		&& args[*idx][*odx] != '\0')
+		message_error(NOT_INT, &args[*idx][*odx]);
 }

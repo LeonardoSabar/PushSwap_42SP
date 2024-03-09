@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:33:13 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/09 18:56:12 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/09 20:12:38 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_stack
 typedef struct s_push
 {
 	t_stack	stacks;
-	int		size;
 	int		*array;
 }	t_push;
 
@@ -54,15 +53,15 @@ typedef enum e_type
 }	t_type;
 
 long	ft_atol(const char *str);
-int		list_to_compare(t_push *stack);
+int		build_list(t_push *push);
 int		ft_isspace_push(int c);
-void	sign_validation(char **args);
-void	args_validation(char **args);
-void	count_validation(int arg_nbr, char **args, t_push *push);
-void	stack_build(t_push *stack, char **argv);
-void	int_compare(t_push *stack);
+void	arg_validation(char **args);
+void	validation(int arg_nbr, char **args, t_push *push);
+void	stack_build(t_push *push, char **argv);
+void	compare(t_push *push);
 void	message_error(char *str1, char *str2);
 void	free_split(char **split);
 void	first_int(char arg);
-void	sign(char **args, int *idx, int *odx);
+void	signal_validation(char **args, int *idx, int *odx);
+
 #endif

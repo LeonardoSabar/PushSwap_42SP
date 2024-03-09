@@ -6,49 +6,39 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 17:20:17 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/09 18:33:46 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/09 19:41:04 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	stack_build(t_push *stack, char **argv)
+void	stack_build(t_push *push, char **argv)
 {
-	t_stack	*new;
-	int		idx;
-	int		odx;
-	char	**args;
+	t_element	*new;
+	int			idx;
+	int			odx;
+	char		**args;
+	int			*nbr;
 
-	idx = 1;
-	while (argv[idx])
+	idx = 0;
+	while (argv[++idx])
 	{
-		odx = 0;
+		odx = -1;
 		args = ft_split(argv[idx], ' ');
-		while (args[odx])
+		while (args[++odx])
 		{
-			new = malloc(sizeof(t_stack));
-			if (!new)
-				return ;
-			new->value = ft_atoi(args[odx]);
-			if (!stack->stack_a)
+			nbr = malloc(sizeof(int));
+			*nbr = ft_atoi(args[odx]);
+			new = ft_lstnewelement((void *)nbr);
+			if (!push->stacks.stack_a)
 			{
-				stack->stack_a = new;
-				stack->first_a = stack->stack_a;
-				stack->size++;
-				printf("%d\n", stack->stack_a->value);
+				push->stacks.stack_a = malloc(sizeof(t_dolist));
+				push->stacks.stack_a->first = new;
 			}
 			else
-			{
-				new->prev = stack->stack_a;
-				new->prev = stack->stack_a;
-				stack->stack_a->next = new;
-				stack->stack_a = new;
-				stack->size++;
-				printf("%d %d\n", stack->stack_a->value, stack->stack_a->prev->value);
-			}
-			odx++;
+				ft_dolstadd_back(&push->stacks.stack_a ,new);
+			push->stacks.stack_a->size++;
 		}
 		ft_free_split(args);
-		idx++;
 	}
 }

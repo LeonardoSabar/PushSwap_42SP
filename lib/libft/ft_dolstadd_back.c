@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_dolstadd_back.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 18:33:16 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/09 20:11:29 by leobarbo         ###   ########.fr       */
+/*   Created: 2024/03/09 19:27:01 by leobarbo          #+#    #+#             */
+/*   Updated: 2024/03/09 19:28:08 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_dolstadd_back(t_dolist **lst, t_element *new)
 {
-	t_push	push;
+	t_element	*aux;
 
-	validation(argc, argv, &push);
-	stack_build(&push, argv);
-	compare(&push);
-	while (push.stacks.stack_a->first)
+	aux = (*lst)->first;
+	if (aux == NULL)
 	{
-		ft_printf("%d\n", *((int *)push.stacks.stack_a->first->content));
-		push.stacks.stack_a->first = push.stacks.stack_a->first->next;
+		(*lst)->first = new;
+		return ;
 	}
-	return (0);
+	while (aux->next)
+		aux = aux->next;
+	aux->next = new;
 }
