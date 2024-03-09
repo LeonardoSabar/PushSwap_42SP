@@ -6,24 +6,11 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 17:20:17 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/09 13:20:18 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/09 18:33:46 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	free_split(char **split)
-{
-	int	idx;
-
-	idx = 0;
-	while (split[idx])
-	{
-		free(split[idx]);
-		idx++;
-	}
-	free(split);
-}
 
 void	stack_build(t_push *stack, char **argv)
 {
@@ -61,7 +48,7 @@ void	stack_build(t_push *stack, char **argv)
 			}
 			odx++;
 		}
-		free_split(args);
+		ft_free_split(args);
 		idx++;
 	}
 }

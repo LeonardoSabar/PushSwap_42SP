@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 17:06:11 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/09 15:20:24 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/09 18:28:24 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void		ft_lstclear(t_list **lst, void (*del)(void*));
 void		ft_lstdelone(t_list *lst, void (*del)(void*));
 void		ft_lstiter(t_list *lst, void (*f)(void*));
 int			ft_lstsize(t_list *lst);
+void		ft_free_split(char **split);
 t_list		*ft_lstlast(t_list *lst);
 t_list		*ft_lstnew(void *content);
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void*));
@@ -85,5 +86,6 @@ t_element	*ft_lstpop(t_dolist *lst, int index);
 t_element	*ft_lstnewelement(void *content);
 void		ft_lstadd_after(t_dolist *lst, t_element *ref, t_element *el);
 void		ft_lstadd_before(t_dolist *lst, t_element *ref, t_element *el);
+long		ft_atol(const char *str);
 
 #endif

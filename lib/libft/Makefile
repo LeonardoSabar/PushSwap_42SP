@@ -6,7 +6,7 @@
 #    By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/20 08:35:36 by leobarbo          #+#    #+#              #
-#    Updated: 2024/03/09 15:32:20 by leobarbo         ###   ########.fr        #
+#    Updated: 2024/03/09 18:29:18 by leobarbo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,14 @@ SRCS := $(addprefix $(SRCS_PATH),\
 		ft_lstadd_back.c \
 		ft_lstdelone.c \
 		ft_lstclear.c \
-		ft_lstiter.c)
+		ft_lstiter.c \
+		ft_lstpickel.c \
+		ft_lstpop.c \
+		ft_lstnewelement.c \
+		ft_lstadd_after.c \
+		ft_lstadd_before.c \
+		ft_atol.c \
+		ft_freesplit.c)
 
 OBJS := $(SRCS:%.c=$(BUILD_DIR)%.o)
 

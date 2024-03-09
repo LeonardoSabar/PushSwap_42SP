@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:33:13 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/09 14:56:04 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/09 18:56:12 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,13 @@
 
 typedef struct s_stack
 {
-	struct s_stack	*next;
-	struct s_stack	*prev;
-	int				value;
-	int				position;
+	t_dolist	*stack_a;
+	t_dolist	*stack_b;
 }	t_stack;
 
 typedef struct s_push
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	t_stack	*first_a;
-	t_stack	*last_a;
-	t_stack	*first_b;
-	t_stack	*last_b;
+	t_stack	stacks;
 	int		size;
 	int		*array;
 }	t_push;
@@ -70,5 +63,6 @@ void	stack_build(t_push *stack, char **argv);
 void	int_compare(t_push *stack);
 void	message_error(char *str1, char *str2);
 void	free_split(char **split);
-
+void	first_int(char arg);
+void	sign(char **args, int *idx, int *odx);
 #endif
