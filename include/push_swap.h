@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:33:13 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/08 16:49:00 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/09 14:56:04 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
 # define INVALID_MSG "Invalid argument"
 # define INT_DUPLICATED "Duplicated number: "
 # define NOT_INT "Not a valid number: "
-# define INT_OVERFLOW "Number overflow"
+# define INT_OVERFLOW "Number overflow: "
+# define EMPTY_ARRAY "Invaldid. Empty argument!"
 
 typedef struct s_stack
 {
@@ -59,11 +60,15 @@ typedef enum e_type
 	ERROR,
 }	t_type;
 
+long	ft_atol(const char *str);
+int		list_to_compare(t_push *stack);
+int		ft_isspace_push(int c);
+void	sign_validation(char **args);
 void	args_validation(char **args);
 void	count_validation(int arg_nbr, char **args, t_push *push);
 void	stack_build(t_push *stack, char **argv);
 void	int_compare(t_push *stack);
-int		list_to_compare(t_push *stack);
 void	message_error(char *str1, char *str2);
+void	free_split(char **split);
 
 #endif
