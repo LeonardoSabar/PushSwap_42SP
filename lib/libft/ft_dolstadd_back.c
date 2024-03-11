@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 19:27:01 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/09 19:28:08 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/11 09:04:21 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ void	ft_dolstadd_back(t_dolist **lst, t_element *new)
 	}
 	while (aux->next)
 		aux = aux->next;
+	new->prev = aux;
 	aux->next = new;
 }

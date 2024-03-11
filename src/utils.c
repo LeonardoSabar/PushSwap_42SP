@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:19:30 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/09 20:13:17 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/11 11:11:56 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,19 @@ int	ft_isspace_push(int c)
 	if ((c >= 11 && c <= 13) || c == 32 || c == 9)
 		return (1);
 	return (0);
+}
+void	free_stack(t_dolist **stack)
+{
+	if (!stack)
+		return ;
+	while ((*stack)->first->next)
+	{
+		(*stack)->first = (*stack)->first->next;
+		free((*stack)->first->prev->content);
+		free((*stack)->first->prev);
+		(*stack)->first->prev = NULL;
+}
+	free((*stack)->first->content);
+	free((*stack)->first);
+	free(*stack);
 }

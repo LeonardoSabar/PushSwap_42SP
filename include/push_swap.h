@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:33:13 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/09 20:12:38 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/11 12:03:20 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 # define PUSH_SWAP_H
 
 # include <stdio.h>
+# include <limits.h>
 # include "libft.h"
 # include "ft_printf.h"
-
-# define INT_MIN -2147483648
-# define INT_MAX 2147483647
 
 # define PARAMETERS_MSG "Two or more parameters are required"
 # define INVALID_MSG "Invalid argument"
@@ -63,5 +61,7 @@ void	message_error(char *str1, char *str2);
 void	free_split(char **split);
 void	first_int(char arg);
 void	signal_validation(char **args, int *idx, int *odx);
+void	free_stack(t_dolist **stack);
+void	swap_tack(t_dolist **stack);
 
 #endif

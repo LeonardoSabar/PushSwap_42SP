@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 15:21:37 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/09 15:21:45 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/11 12:02:11 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,6 @@ static void	ft_el_is_first(t_dolist *lst, t_element *el)
 	lst->first = el->next;
 	if (lst->first)
 		lst->first->prev = NULL;
-}
-
-static void	ft_el_is_last(t_dolist *lst, t_element *el)
-{
-	lst->last = el->prev;
-	if (lst->last)
-		lst->last->next = NULL;
 }
 
 t_element	*ft_lstpop(t_dolist *lst, int index)

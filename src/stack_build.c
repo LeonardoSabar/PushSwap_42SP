@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 17:20:17 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/09 19:41:04 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/11 11:13:09 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ void	stack_build(t_push *push, char **argv)
 		args = ft_split(argv[idx], ' ');
 		while (args[++odx])
 		{
-			nbr = malloc(sizeof(int));
+			nbr = ft_calloc(1, sizeof(int));
 			*nbr = ft_atoi(args[odx]);
 			new = ft_lstnewelement((void *)nbr);
 			if (!push->stacks.stack_a)
 			{
-				push->stacks.stack_a = malloc(sizeof(t_dolist));
+				push->stacks.stack_a = ft_calloc(1, sizeof(t_dolist));
 				push->stacks.stack_a->first = new;
 			}
 			else
