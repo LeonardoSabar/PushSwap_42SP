@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 17:06:11 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/09 19:28:47 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/11 15:26:52 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ void		ft_lstadd_after(t_dolist *lst, t_element *ref, t_element *el);
 void		ft_lstadd_before(t_dolist *lst, t_element *ref, t_element *el);
 long		ft_atol(const char *str);
 void		ft_dolstadd_back(t_dolist **lst, t_element *new);
+void		ft_dolstadd_front(t_dolist **lst, t_element *new);
 
 #endif

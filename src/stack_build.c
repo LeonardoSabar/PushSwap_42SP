@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 17:20:17 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/11 11:13:09 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/11 15:36:41 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,7 @@ void	stack_build(t_push *push, char **argv)
 			*nbr = ft_atoi(args[odx]);
 			new = ft_lstnewelement((void *)nbr);
 			if (!push->stacks.stack_a)
-			{
-				push->stacks.stack_a = ft_calloc(1, sizeof(t_dolist));
-				push->stacks.stack_a->first = new;
-			}
+				create_lst(new, &push->stacks.stack_a);
 			else
 				ft_dolstadd_back(&push->stacks.stack_a ,new);
 			push->stacks.stack_a->size++;

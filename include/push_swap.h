@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:33:13 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/11 12:03:20 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/11 17:33:19 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,13 @@ typedef struct s_stack
 {
 	t_dolist	*stack_a;
 	t_dolist	*stack_b;
-}	t_stack;
+}				t_stack;
 
 typedef struct s_push
 {
 	t_stack	stacks;
 	int		*array;
-}	t_push;
-
-typedef enum e_exit
-{
-	SUCCESS,
-	FAILURE,
-}	t_exit;
+}			t_push;
 
 typedef enum e_type
 {
@@ -62,6 +56,14 @@ void	free_split(char **split);
 void	first_int(char arg);
 void	signal_validation(char **args, int *idx, int *odx);
 void	free_stack(t_dolist **stack);
-void	swap_tack(t_dolist **stack);
+void	swap_stack(t_dolist **stack);
+void	create_lst(t_element *new, t_dolist **stack);
+void	push_stack(t_dolist **stack_out, t_dolist **stack_in);
+void	pa(t_dolist **stack_b, t_dolist **stack_a);
+void	pb(t_dolist **stack_a, t_dolist **stack_b);
+void	sa(t_dolist **stack_a);
+void	sb(t_dolist **stack_b);
+void	ss(t_dolist **stack_a, t_dolist **stack_b);
+void	rotate(t_dolist **stack);
 
 #endif
