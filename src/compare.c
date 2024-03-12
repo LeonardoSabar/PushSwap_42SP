@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 20:10:17 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/11 11:20:07 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/12 13:16:44 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ void	compare(t_push *push)
 		while (idx < (int)push->stacks.stack_a->size)
 		{
 			if (*((int *)tmp->content) == push->array[idx] && compare == 1)
-				{
-					free(push->array);
-					free_stack(&push->stacks.stack_a);
-					message_error(INT_DUPLICATED, "");
-				}
+			{
+				free(push->array);
+				free_stack(&push->stacks.stack_a);
+				message_error(INT_DUPLICATED, "");
+			}
 			else if (*((int *)tmp->content) == push->array[idx])
 				compare = 1;
 			idx++;

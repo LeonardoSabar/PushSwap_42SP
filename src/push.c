@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 08:39:28 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/11 16:32:35 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/12 15:08:43 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,9 @@ void	push_stack(t_dolist **stack_out, t_dolist **stack_in)
 	tmp = (*stack_out)->first;
 	ft_lstpop((*stack_out), 0);
 	if (!(*stack_in))
-	{
 		create_lst(tmp, stack_in);
-		(*stack_in)->size++;
-	}
 	else
-		ft_dolstadd_front(stack_in,tmp);
+		ft_dolstadd_front(stack_in, tmp);
 }
 
 void	pa(t_dolist **stack_b, t_dolist **stack_a)

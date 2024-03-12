@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:33:13 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/11 17:33:19 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/12 09:29:43 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,12 @@ void	sa(t_dolist **stack_a);
 void	sb(t_dolist **stack_b);
 void	ss(t_dolist **stack_a, t_dolist **stack_b);
 void	rotate(t_dolist **stack);
+void	ra(t_dolist **stack_a);
+void	rb(t_dolist **stack_b);
+void	rr(t_dolist **stack_a, t_dolist **stack_b);
+void	rotate_reverse(t_dolist **stack);
+void	rra(t_dolist **stack_a);
+void	rrb(t_dolist **stack_b);
+void	rrr(t_dolist **stack_a, t_dolist **stack_b);
 
 #endif

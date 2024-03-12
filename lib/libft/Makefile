@@ -6,7 +6,7 @@
 #    By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/20 08:35:36 by leobarbo          #+#    #+#              #
-#    Updated: 2024/03/11 15:30:56 by leobarbo         ###   ########.fr        #
+#    Updated: 2024/03/12 09:44:09 by leobarbo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,6 +99,7 @@ SRCS := $(addprefix $(SRCS_PATH),\
 		ft_dolstadd_front.c)
 
 OBJS := $(SRCS:%.c=$(BUILD_DIR)%.o)
+DEPS := $(OBJS:.o=.=.d)
 
 #! ******************************************************************************#
 #                                    COMMANDS                                    #

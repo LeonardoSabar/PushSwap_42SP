@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:19:30 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/11 17:42:26 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/12 13:17:45 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,27 @@ int	ft_isspace_push(int c)
 		return (1);
 	return (0);
 }
+
 void	create_lst(t_element *new, t_dolist **stack)
 {
 	(*stack) = ft_calloc(1, sizeof(t_dolist));
 	(*stack)->first = new;
 	(*stack)->last = new;
+	(*stack)->size++;
 }
 
 void	free_stack(t_dolist **stack)
 {
 	if (!(*stack))
 		return ;
-	while ((*stack)->first->next)
+	while ((*stack)->first && (*stack)->first->next)
 	{
 		(*stack)->first = (*stack)->first->next;
 		free((*stack)->first->prev->content);
 		free((*stack)->first->prev);
 		(*stack)->first->prev = NULL;
 	}
-	if((*stack)->first)
+	if ((*stack)->first)
 		free((*stack)->first->content);
 	free((*stack)->first);
 	free(*stack);

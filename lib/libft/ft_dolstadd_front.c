@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 15:20:05 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/11 15:44:50 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/12 08:41:51 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,5 @@ void	ft_dolstadd_front(t_dolist **lst, t_element *new)
 	(*lst)->first->prev = new;
 	new->prev = NULL;
 	(*lst)->first = new;
+	(*lst)->size++;
 }

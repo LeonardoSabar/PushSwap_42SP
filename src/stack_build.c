@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 17:20:17 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/11 15:36:41 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/12 13:18:25 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ void	stack_build(t_push *push, char **argv)
 			if (!push->stacks.stack_a)
 				create_lst(new, &push->stacks.stack_a);
 			else
-				ft_dolstadd_back(&push->stacks.stack_a ,new);
-			push->stacks.stack_a->size++;
+				ft_dolstadd_back(&push->stacks.stack_a, new);
 		}
 		ft_free_split(args);
 	}
