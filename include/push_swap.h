@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:33:13 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/12 09:29:43 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/13 15:00:11 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ typedef struct s_push
 {
 	t_stack	stacks;
 	int		*array;
+	int		max_value;
+	int		min_value;
+	int		big_pivot;
+	int		small_pivot;
 }			t_push;
 
 typedef enum e_type
@@ -72,5 +76,15 @@ void	rotate_reverse(t_dolist **stack);
 void	rra(t_dolist **stack_a);
 void	rrb(t_dolist **stack_b);
 void	rrr(t_dolist **stack_a, t_dolist **stack_b);
+void	get_pivots(t_push *push);
+int		min_value(t_push *push);
+int		max_value(t_push *push);
+int		sort_validation(t_dolist **stack, t_push *push);
+void	sort(t_push *push);
+void	sort_three_a(t_push *push);
+void	print_results(t_push *push);
+void	sort_four(t_push *push);
+void	sort_five(t_push *push);
+void	sort_big(t_push *push);
 
 #endif
