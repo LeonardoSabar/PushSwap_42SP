@@ -6,11 +6,30 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 20:10:17 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/13 10:22:23 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/19 08:19:07 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	build_list(t_push *push)
+{
+	int			idx;
+	t_element	*tmp;
+
+	tmp = push->stacks.stack_a->first;
+	push->array = ft_calloc(1, sizeof(int) * push->stacks.stack_a->size);
+	if (!push->array)
+		return (1);
+	idx = 0;
+	while (tmp)
+	{
+		push->array[idx] = *((int *)tmp->content);
+		tmp = tmp->next;
+		idx++;
+	}
+	return (0);
+}
 
 void	compare(t_push *push)
 {
@@ -39,23 +58,4 @@ void	compare(t_push *push)
 		tmp = tmp->next;
 	}
 	free(push->array);
-}
-
-int	build_list(t_push *push)
-{
-	int			idx;
-	t_element	*tmp;
-
-	tmp = push->stacks.stack_a->first;
-	push->array = ft_calloc(1, sizeof(int) * push->stacks.stack_a->size);
-	if (!push->array)
-		return (1);
-	idx = 0;
-	while (tmp)
-	{
-		push->array[idx] = *((int *)tmp->content);
-		tmp = tmp->next;
-		idx++;
-	}
-	return (0);
 }

@@ -6,18 +6,26 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:19:30 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/12 13:17:45 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/19 12:16:53 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	message_error(char *str1, char *str2)
+void	message_error(char *str1, char *str2) // arrumar mensagens de erro
 {
 	ft_putstr_fd("Push_swap: ", ERROR);
 	ft_putstr_fd(str1, ERROR);
 	ft_putendl_fd(str2, ERROR);
 	exit(EXIT_FAILURE);
+}
+
+int	abs_math(int value)
+{
+	if (value > 0)
+		return (value);
+	else
+		return (-value);
 }
 
 int	ft_isspace_push(int c)

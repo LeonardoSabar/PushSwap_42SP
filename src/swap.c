@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 08:01:58 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/11 16:39:46 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/19 08:40:46 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,30 @@ void	swap_stack(t_dolist **stack)
 	ft_lstadd_after((*stack), (*stack)->first, tmp);
 }
 
-void	sa(t_dolist **stack_a)
+void	sa(t_dolist **stack_a, int time)
 {
-	swap_stack(stack_a);
-	ft_printf("sa\n");
+	while (time--)
+	{
+		swap_stack(stack_a);
+		ft_printf("sa\n");
+	}
 }
 
-void	sb(t_dolist **stack_b)
+void	sb(t_dolist **stack_b, int time)
 {
-	swap_stack(stack_b);
-	ft_printf("sb\n");
+	while (time--)
+	{
+		swap_stack(stack_b);
+		ft_printf("sb\n");
+	}
 }
 
-void	ss(t_dolist **stack_a, t_dolist **stack_b)
+void	ss(t_dolist **stack_a, t_dolist **stack_b, int time)
 {
-	swap_stack(stack_a);
-	swap_stack(stack_b);
-	ft_printf("ss\n");
+	while (time--)
+	{
+		swap_stack(stack_a);
+		swap_stack(stack_b);
+		ft_printf("ss\n");
+	}
 }

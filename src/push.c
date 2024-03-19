@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 08:39:28 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/12 15:08:43 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/19 08:26:13 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,20 @@ void	push_stack(t_dolist **stack_out, t_dolist **stack_in)
 		ft_dolstadd_front(stack_in, tmp);
 }
 
-void	pa(t_dolist **stack_b, t_dolist **stack_a)
+void	pa(t_dolist **stack_b, t_dolist **stack_a, int time)
 {
-	push_stack(stack_b, stack_a);
-	ft_printf("pa\n");
+	while (time--)
+	{
+		push_stack(stack_b, stack_a);
+		ft_printf("pa\n");
+	}
 }
 
-void	pb(t_dolist **stack_a, t_dolist **stack_b)
+void	pb(t_dolist **stack_a, t_dolist **stack_b, int time)
 {
-	push_stack(stack_a, stack_b);
-	ft_printf("pb\n");
+	while (time--)
+	{
+		push_stack(stack_a, stack_b);
+		ft_printf("pb\n");
+	}
 }

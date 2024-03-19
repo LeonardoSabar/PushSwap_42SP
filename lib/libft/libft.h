@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 17:06:11 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/11 15:26:52 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/19 11:36:20 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ typedef struct s_element
 	void				*content;
 	struct s_element	*next;
 	struct s_element	*prev;
+	int					rank;
+	int					cost_a;
+	int					cost_b;
 }	t_element;
 
 typedef struct s_dolist

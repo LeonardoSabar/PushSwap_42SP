@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 08:39:31 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/12 09:36:16 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/19 08:35:30 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,30 @@ void	rotate_reverse(t_dolist **stack)
 	ft_dolstadd_front(stack, tmp);
 }
 
-void	rra(t_dolist **stack_a)
+void	rra(t_dolist **stack_a, int time)
 {
-	rotate_reverse(stack_a);
-	ft_printf("rra\n");
+	while (time--)
+	{
+		rotate_reverse(stack_a);
+		ft_printf("rra\n");
+	}
 }
 
-void	rrb(t_dolist **stack_b)
+void	rrb(t_dolist **stack_b, int time)
 {
-	rotate_reverse(stack_b);
-	ft_printf("rrb\n");
+	while (time--)
+	{
+		rotate_reverse(stack_b);
+		ft_printf("rrb\n");
+	}
 }
 
-void	rrr(t_dolist **stack_a, t_dolist **stack_b)
+void	rrr(t_dolist **stack_a, t_dolist **stack_b, int time)
 {
-	rotate_reverse(stack_a);
-	rotate_reverse(stack_b);
-	ft_printf("rrr\n");
+	while (time--)
+	{
+		rotate_reverse(stack_a);
+		rotate_reverse(stack_b);
+		ft_printf("rrr\n");
+	}
 }

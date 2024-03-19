@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:11:40 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/13 10:55:37 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/19 12:17:51 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	sort_validation(t_dolist **stack, t_push *push)
 		while (tmp_node_curr)
 		{
 			if (tmp_value > *((int *)tmp_node_curr->content))
-			return (0);
+				return (0);
 			tmp_node_curr = tmp_node_curr->next;
 		}
 		tmp_node = tmp_node->next;
