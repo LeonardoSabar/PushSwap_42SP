@@ -6,17 +6,17 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 08:39:28 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/19 08:26:13 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:39:43 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_stack(t_dolist **stack_out, t_dolist **stack_in)
+void	ft_push(t_dolist **stack_out, t_dolist **stack_in)
 {
 	t_element	*tmp;
 
-	if (!(*stack_out) || !(*stack_out)->first)
+	if (!stack_out || !(*stack_out)->first)
 		return ;
 	tmp = (*stack_out)->first;
 	ft_lstpop((*stack_out), 0);
@@ -26,20 +26,20 @@ void	push_stack(t_dolist **stack_out, t_dolist **stack_in)
 		ft_dolstadd_front(stack_in, tmp);
 }
 
-void	pa(t_dolist **stack_b, t_dolist **stack_a, int time)
+void	pa(t_dolist **stack_b, t_dolist **stack_a, int count)
 {
-	while (time--)
+	while (count--)
 	{
-		push_stack(stack_b, stack_a);
+		ft_push(stack_b, stack_a);
 		ft_printf("pa\n");
 	}
 }
 
-void	pb(t_dolist **stack_a, t_dolist **stack_b, int time)
+void	pb(t_dolist **stack_a, t_dolist **stack_b, int count)
 {
-	while (time--)
+	while (count--)
 	{
-		push_stack(stack_a, stack_b);
+		ft_push(stack_a, stack_b);
 		ft_printf("pb\n");
 	}
 }

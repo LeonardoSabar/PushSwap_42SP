@@ -6,18 +6,20 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 15:10:36 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/19 11:19:31 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:39:26 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	min_value(t_dolist *stack)
+int	min_value(t_dolist *stk)
 {
 	int			min;
 	t_element	*tmp;
 
-	tmp = stack->first;
+	if (!stk)
+		return (-1);
+	tmp = stk->first;
 	min = *((int *)tmp->content);
 	while (tmp)
 	{
@@ -28,14 +30,14 @@ int	min_value(t_dolist *stack)
 	return (min);
 }
 
-int	max_value(t_dolist *stack)
+int	max_value(t_dolist *stk)
 {
 	int			max;
 	t_element	*tmp;
 
-	if (!stack)
+	if (!stk)
 		return (-1);
-	tmp = stack->first;
+	tmp = stk->first;
 	max = *((int *)tmp->content);
 	while (tmp)
 	{
@@ -50,6 +52,6 @@ void	get_pivots(t_push *push)
 {
 	push->min_value = min_value(push->stacks.stack_a);
 	push->max_value = max_value(push->stacks.stack_a);
-	push->big_pivot = (push->max_value + push->min_value) / 2;
+	push->big_pivot = (push->min_value + push->max_value) / 2;
 	push->small_pivot = (push->min_value + push->big_pivot) / 2;
 }

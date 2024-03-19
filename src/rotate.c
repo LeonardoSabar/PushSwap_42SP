@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 08:39:35 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/19 11:40:57 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:40:28 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,27 +23,27 @@ void	rotate(t_dolist **stack)
 	ft_dolstadd_back(stack, tmp);
 }
 
-void	ra(t_dolist **stack_a, int time)
+void	ra(t_dolist **stack_a, int count)
 {
-	while (time--)
+	while (count--)
 	{
 		rotate(stack_a);
 		ft_printf("ra\n");
 	}
 }
 
-void	rb(t_dolist **stack_b, int time)
+void	rb(t_dolist **stack_b, int count)
 {
-	while (time--)
+	while (count--)
 	{
 		rotate(stack_b);
 		ft_printf("rb\n");
 	}
 }
 
-void	rr(t_dolist **stack_a, t_dolist **stack_b, int time)
+void	rr(t_dolist **stack_a, t_dolist **stack_b, int count)
 {
-	while (time--)
+	while (count--)
 	{
 		rotate(stack_a);
 		rotate(stack_b);

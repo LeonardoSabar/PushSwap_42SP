@@ -6,66 +6,113 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:36:44 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/19 12:19:35 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/19 15:58:17 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_big(t_push *push)
+void	sort(t_push *push)
 {
-	int	iterations;
-
-	iterations = push->stacks.stack_a->size;
-	while (iterations--)
-	{
-		if ((*(int *)push->stacks.stack_a->first->content) < push->big_pivot)
-		{
-			pb(&push->stacks.stack_a, &push->stacks.stack_b, 1);
-			if (push->stacks.stack_b->size > 1 \
-			&& (*(int *)push->stacks.stack_b->first->content) \
-			< push->small_pivot)
-			{
-				if ((*(int *)push->stacks.stack_a->first->content) \
-				> push->big_pivot)
-					rr(&push->stacks.stack_a, &push->stacks.stack_b, 1);
-				else
-					rb(&push->stacks.stack_b, 1);
-			}
-		}
-		else
-			ra(&push->stacks.stack_a, 1);
-	}
-	sort(push);
-	set_b_to_a(&push);
+	sort_validation(&push->stacks.stack_a, push);
+	get_pivots(push);
+	if (push->stacks.stack_a->size == 2)
+		sa(&push->stacks.stack_a, 1);
+	else if (push->stacks.stack_a->size == 3)
+		sort_three(push->stacks.stack_a);
+	else if (push->stacks.stack_a->size == 4)
+		sort_four(push->stacks.stack_a, push->stacks.stack_b, push);
+	else if (push->stacks.stack_a->size == 5)
+		sort_five(push->stacks.stack_a, push->stacks.stack_b, push);
+	else
+		sort_prepare(&push);
+	sort_validation(&push->stacks.stack_a, push);
 }
 
-void	rotate_until_sort(t_dolist *stk_a)
+void	sort_three(t_dolist *stk)
 {
-	int			min;
-	t_element	*tmp;
-	int			idx;
+	int	max;
 
-	tmp = stk_a->first;
-	min = tmp->rank;
-	idx = 0;
-	while (tmp)
+	max = max_value(stk);
+	if (*((int *)stk->first->content) == max)
+		ra(&stk, 1);
+	else if (*((int *)stk->first->next->content) == \
+	max)
+		rra(&stk, 1);
+	if (*((int *)stk->first->content) > \
+	*((int *)stk->first->next->content))
+		sa(&stk, 1);
+}
+
+void	sort_four(t_dolist *stk_a, t_dolist *stk_b, t_push *push)
+{
+	int	min;
+
+	min = min_value(stk_a);
+	if (*(int *)stk_a->first->next->content == min)
+		sa(&stk_a, 1);
+	else if (*(int *)stk_a->first->next->next->content == min)
 	{
-		if (min < tmp->rank)
-			min = tmp->rank;
-		tmp = tmp->next;
+		ra(&stk_a, 1);
+		sa(&stk_a, 1);
 	}
-	tmp = stk_a->first;
-	while (tmp && tmp->rank != min)
+	else if (*(int *)stk_a->first->next->next->next->content == min)
+		rra(&stk_a, 1);
+	if (!sort_validation(&stk_a, push))
 	{
-		idx++;
-		tmp = tmp->next;
+		pb(&stk_a, &stk_b, 1);
+		sort_three(stk_a);
+		pa(&stk_b, &stk_a, 1);
 	}
-	idx++;
-	if (min > (int)(stk_a->size / 2))
-		min -= stk_a->size;
-	if (min < 0)
-		rra(&stk_a, abs_math(idx));
 	else
-		ra(&stk_a, abs_math(idx));
+		sort_three(stk_a);
+}
+
+void	sort_five(t_dolist *stk_a, t_dolist *stk_b, t_push *push)
+{
+	int	min;
+	min = min_value(stk_a);
+	if (*(int *)stk_a->first->next->content == min)
+		sa(&stk_a, 1);
+	else if (*(int *)stk_a->first->next->next->content == min)
+		rra(&stk_a, 3);
+	else if (*(int *)stk_a->first->next->next->next->content == min)
+		rra(&stk_a, 2);
+	else if (*(int *)stk_a->first->next->next->next->next->content == min)
+		rra(&stk_a, 1);
+	if (!sort_validation(&stk_a, push))
+	{
+		pb(&stk_a, &stk_b, 1);
+		sort_four(stk_a, stk_b, push);
+		pa(&stk_b, &stk_a, 1);
+	}
+	else
+		sort_four(stk_a, stk_b, push);
+}
+
+void	sort_three_rank(t_dolist *stk)
+{
+	int	first;
+	int	second;
+	int	third;
+
+	first = value(stk, 1);
+	second = value(stk, 2);
+	third = value(stk, 3);
+	if (first > second && third > second && third > first)
+		sa(&stk, 1);
+	else if (first > second && third > second && first > third)
+		ra(&stk, 1);
+	else if (second > first && second > third && first > third)
+		rra(&stk, 1);
+	else if (second > first && second > third && third > first)
+	{
+		sa(&stk, 1);
+		ra(&stk, 1);
+	}
+	else if (first > second && second > third && first > third)
+	{
+		sa(&stk, 1);
+		rra(&stk, 1);
+	}
 }

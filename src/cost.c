@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 11:30:56 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/19 12:18:43 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/19 15:33:22 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	calculate_cost(t_dolist **stk_a, t_dolist **stk_b)
 {
-	int	idx;
+	int			idx;
 	t_element	*aux;
 
 	idx = 0;
 	aux = (*stk_b)->first;
 	while (aux)
 	{
-		aux->cost_a = min_value_rank((*stk_a), aux->rank);
+		aux->cost_a = get_min_value_rank((*stk_a), aux->rank);
 		if (aux->cost_a > ((int)(*stk_a)->size / 2))
 			aux->cost_a = aux->cost_a - (*stk_a)->size;
 		if (idx > (int)(*stk_b)->size / 2)
@@ -53,22 +53,6 @@ void	get_cheap_cost(t_dolist **stk_a, t_dolist **stk_b)
 		}
 		tmp = tmp->next;
 	}
-
-
-	// while (node->cost_a-- > 0 && node->cost_b-- > 0)
-	// 	rr(stk_a, stk_b, 1);
-	// while (node->cost_a++ < 0 && node->cost_b++ < 0)
-	// 	rrr(stk_a, stk_b, 1);
-
-	// while (node->cost_a++ < 0)
-	// 	rra(&stk_a, 1);
-	// while (node->cost_a-- > 0)
-	// 	ra(&stk_a, 1);
-	// while (node->cost_b++ < 0)
-	// 	rrb(&stk_b, 1);
-	// while (node->cost_b-- > 0)
-	// 	rb(&stk_b, 1);
-
 	fprintf(stderr, "(%d %d %d)\n", node->rank, node->cost_a, node->cost_b);
 
 	costa = node->cost_a;
@@ -96,13 +80,4 @@ void	get_cheap_cost(t_dolist **stk_a, t_dolist **stk_b)
 		rb(&(*stk_b), abs_math(node->cost_b));
 	else if (node->cost_b < 0)
 		rrb(&(*stk_b), abs_math(node->cost_b));
-
-	// if (node->cost_a < ((int)(*stk_a)->size / 2))
-	// 	ra(stk_a, node->cost_a);
-	// else if (node->cost_a > ((int)(*stk_a)->size / 2))
-	// 	rra(stk_a, (*stk_a)->size - node->cost_a);
-	// if (node->cost_b < ((int)(*stk_b)->size / 2))
-	// 	rb(stk_b, node->cost_b);
-	// else if (node->cost_b > ((int)(*stk_b)->size / 2))
-	// 	rrb(stk_b, (*stk_b)->size - node->cost_b);
 }

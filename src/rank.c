@@ -6,11 +6,47 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 09:25:31 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/19 11:19:57 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/19 15:01:14 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	min_value_rank(t_dolist *stk, int value)
+{
+	int			min;
+	t_element	*tmp;
+
+	if (!stk)
+		return (-1);
+	tmp = stk->first;
+	min = __INT_MAX__;
+	while (tmp)
+	{
+		if (*((int *)tmp->content) < min && *((int *)tmp->content) > value)
+			min = *((int *)tmp->content);
+		tmp = tmp->next;
+	}
+	return (min);
+}
+
+int	min_value_rank_aa(t_dolist *stk, int value)
+{
+	int			min;
+	t_element	*tmp;
+
+	if (!stk)
+		return (-1);
+	tmp = stk->first;
+	min = __INT_MAX__;
+	while (tmp)
+	{
+		if (tmp->rank < min && tmp->rank > value)
+			min = tmp->rank;
+		tmp = tmp->next;
+	}
+	return (min);
+}
 
 void	rank_linked_list(t_stack *stack)
 {
@@ -35,43 +71,26 @@ void	rank_linked_list(t_stack *stack)
 	}
 }
 
-int	min_value_rank(t_dolist *stk, int value)
+int	get_min_value_rank(t_dolist *stack, int min)
 {
-	int			min;
-	t_element	*tmp;
+	int			count;
+	int			search;
 
-	if (!stk)
-		return (-1);
-	tmp = stk->first;
-	min = __INT_MAX__;
-	while (tmp)
+	t_element	*temp;
+	count = 0;
+	temp = stack->first;
+	search = min_value_rank_aa(stack, min);
+	while (temp)
 	{
-		if (*((int *)tmp->content) < min && *((int *)tmp->content) > value)
-			min = *((int *)tmp->content);
-		tmp = tmp->next;
+		if (temp->rank == search)
+			break ;
+		temp = temp->next;
+		count++;
 	}
-	return (min);
+	return (count);
 }
 
-int	next_min_value_rank(t_dolist *stk, int value)
-{
-	int			min;
-	t_element	*tmp;
-
-	if (!stk)
-		return (-1);
-	tmp = stk->first;
-	min = __INT_MAX__;
-	while (tmp)
-	{
-		if (tmp->rank < min && tmp->rank > value)
-			min = tmp->rank;
-		tmp = tmp->next;
-	}
-	return (min);
-}
-
-int	exist_rank(t_dolist *stack, int rank)
+int	count_exist_rank(t_dolist *stack, int rank)
 {
 	t_element	*temp;
 	int			count;
@@ -87,7 +106,7 @@ int	exist_rank(t_dolist *stack, int rank)
 	return (count);
 }
 
-int	next_exist_rank(t_dolist *stack, int rank)
+int	count_exist_rank2(t_dolist *stack, int rank)
 {
 	t_element	*temp;
 	int			count;

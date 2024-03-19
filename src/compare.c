@@ -6,13 +6,13 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 20:10:17 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/19 08:19:07 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/19 14:49:07 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	build_list(t_push *push)
+int	list_to_compare(t_push *push)
 {
 	int			idx;
 	t_element	*tmp;
@@ -38,7 +38,7 @@ void	compare(t_push *push)
 	t_element	*tmp;
 
 	tmp = push->stacks.stack_a->first;
-	build_list(push);
+	list_to_compare(push);
 	while (tmp && tmp->next)
 	{
 		compare = 0;
@@ -48,8 +48,8 @@ void	compare(t_push *push)
 			if (*((int *)tmp->content) == push->array[idx] && compare == 1)
 			{
 				free(push->array);
-				free_stack(&push->stacks.stack_a);
-				message_error(INT_DUPLICATED, "");
+				lst_clear(&push->stacks.stack_a);
+				ft_error(INT_DUPLICATED, "", "");
 			}
 			else if (*((int *)tmp->content) == push->array[idx])
 				compare = 1;
