@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:11:40 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/19 14:47:24 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/19 21:09:07 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	validation(int arg_nbr, char **args, t_push *push)
 	push->stacks.stack_a = NULL;
 	push->stacks.stack_b = NULL;
 	if (arg_nbr < 2)
-		exit(EXIT_FAILURE);
+		exit(0);
 	while (args[++idx])
 	{
 		odx = 0;
@@ -87,6 +87,7 @@ int	sort_validation(t_dolist **stack, t_push *push)
 	t_element	*tmp_node_curr;
 	t_element	*tmp_node;
 
+	(void)push;
 	if (!(*stack) || !(*stack)->first)
 		return (-1);
 	tmp_node = (*stack)->first;
@@ -101,11 +102,6 @@ int	sort_validation(t_dolist **stack, t_push *push)
 			tmp_node_curr = tmp_node_curr->next;
 		}
 		tmp_node = tmp_node->next;
-	}
-	if (!push->stacks.stack_b)
-	{
-		lst_clear(stack);
-		exit(EXIT_SUCCESS);
 	}
 	return (1);
 }

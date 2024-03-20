@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 08:42:18 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/19 17:19:49 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/19 21:34:39 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	sort_prepare(t_push **push)
 	else if ((*push)->stacks.stack_a->size > 15)
 		(*push)->pivot.n = 6;
 	else
-		(*push)->pivot.n = 2;
+		(*push)->pivot.n = 1;
 	if ((*push)->pivot.n > 4)
 	{
 		(*push)->pivot.small_pivot = ((*push)->stacks.stack_a->size) \
@@ -38,7 +38,6 @@ void	sort_prepare(t_push **push)
 	}
 	sort_partition(push);
 }
-
 
 void	sort_partition(t_push **push)
 {
@@ -102,15 +101,9 @@ void b_to_a_sort_elements(t_push **push, int size)
 {
 	while (size != 0)
 	{
-		while (count_exist_rank((*push)->stacks.stack_b, (*push)->pivot.big_pivot))
-		{
-			if (((*push)->stacks.stack_b->last->rank) > ((*push)->stacks.stack_b->first->rank))
-				rrb(&(*push)->stacks.stack_b, 1);
-			calculate_cost(&(*push)->stacks.stack_a, &(*push)->stacks.stack_b);
-			print_stack((*push)->stacks.stack_a, (*push)->stacks.stack_b);
-			get_cheap_cost(&(*push)->stacks.stack_a, &(*push)->stacks.stack_b);
-			pa(&(*push)->stacks.stack_b, &(*push)->stacks.stack_a, 1);
-		}
+		calculate_cost(&(*push)->stacks.stack_a, &(*push)->stacks.stack_b);
+		get_cheap_cost(&(*push)->stacks.stack_a, &(*push)->stacks.stack_b);
+		pa(&(*push)->stacks.stack_b, &(*push)->stacks.stack_a, 1);
 		size--;
 	}
 }
@@ -134,9 +127,9 @@ void b_to_a(t_push **push) {
 
 void	rotate_until_sort(t_dolist *stk_a)
 {
-	int	min;
+	int			min;
 	t_element	*tmp;
-	int	idx;
+	int			idx;
 
 	tmp = stk_a->first;
 	min = tmp->rank;

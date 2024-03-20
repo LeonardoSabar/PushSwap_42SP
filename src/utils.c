@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:19:30 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/19 15:02:41 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/19 21:31:25 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ int	abs_math(int value)
 
 void	ft_error(char *str1, char *str2, char *str3)
 {
-	ft_putstr_fd("Push_swap: ", ERROR);
-	ft_putstr_fd(str1, ERROR);
-	ft_putstr_fd(str2, ERROR);
-	ft_putendl_fd(str3, ERROR);
+	(void) str1;
+	(void) str2;
+	(void) str3;
+	ft_putstr_fd("Error\n", 2);
 	exit(EXIT_FAILURE);
 }

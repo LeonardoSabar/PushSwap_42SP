@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 11:30:56 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/19 15:33:22 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/19 19:59:57 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ void	get_cheap_cost(t_dolist **stk_a, t_dolist **stk_b)
 		}
 		tmp = tmp->next;
 	}
-	fprintf(stderr, "(%d %d %d)\n", node->rank, node->cost_a, node->cost_b);
-
 	costa = node->cost_a;
 	costb = node->cost_b;
 

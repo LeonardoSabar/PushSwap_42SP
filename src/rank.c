@@ -6,7 +6,7 @@
 /*   By: leobarbo <leobarbo@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 09:25:31 by leobarbo          #+#    #+#             */
-/*   Updated: 2024/03/19 15:01:14 by leobarbo         ###   ########.fr       */
+/*   Updated: 2024/03/19 21:00:26 by leobarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,24 @@ int	min_value_rank(t_dolist *stk, int value)
 	return (min);
 }
 
+int	max_all_value_rank(t_dolist *stk)
+{
+	int			max;
+	t_element	*tmp;
+
+	if (!stk)
+		return (-1);
+	max = max_value(stk);
+	tmp = stk->first;
+	while (tmp)
+	{
+		if (*((int *)tmp->content) == max)
+			break ;
+		tmp = tmp->next;
+	}
+	return (tmp->rank);
+}
+
 int	min_value_rank_aa(t_dolist *stk, int value)
 {
 	int			min;
@@ -38,7 +56,9 @@ int	min_value_rank_aa(t_dolist *stk, int value)
 	if (!stk)
 		return (-1);
 	tmp = stk->first;
-	min = __INT_MAX__;
+	min = INT_MAX;
+	if (max_all_value_rank(stk) < value)
+		value = 0;
 	while (tmp)
 	{
 		if (tmp->rank < min && tmp->rank > value)

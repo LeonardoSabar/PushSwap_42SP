@@ -2,6 +2,9 @@
 	"files.associations": {
 		"push_swap.h": "c",
 		"stdio.h": "c",
-		"limits": "c"
+		"limits": "c",
+		"*.tcc": "c",
+		"list": "c",
+		"regex": "c"
 	}
 }
